@@ -28,6 +28,13 @@ async function createTableIfNotExists() {
 // Call the function to create the table at application startup
 createTableIfNotExists();
 
+app.use(express.json());
+// Use the cors middleware with specific options
+app.use(cors({
+  origin: '*', // Replace with your React app's domain or '*' for any origin
+  methods: 'GET,POST',
+}));
+
 app.post('/members', async (req, res) => {
   try {
     const {
